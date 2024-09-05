@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "Entity.h"
+#include "Physics/ColliderComponent.h"
 
 GameEngine::Scene::Scene()
 {
@@ -28,6 +29,7 @@ void GameEngine::Scene::update(double deltaTime)
 
 void GameEngine::Scene::fixedUpdate(float FixedDeltatime)
 {
+	//Update Entities
 	for (Entity* entity : m_entities)
 	{
 		if (!entity->getStarted())
@@ -36,6 +38,18 @@ void GameEngine::Scene::fixedUpdate(float FixedDeltatime)
 		entity->fixedUpdate(FixedDeltatime);
 	}
 	onFixedUpdate(FixedDeltatime);
+
+	//Update Colliders
+	for (auto row = m_activeColliders.begin(); row != m_activeColliders.end(); row++)
+	{
+		for (auto column = row; column != m_activeColliders.end(); column++)
+		{
+			if (row == column)
+				continue;
+
+		}
+	}
+
 }
 
 void GameEngine::Scene::draw()

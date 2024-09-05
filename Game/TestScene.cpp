@@ -7,7 +7,7 @@
 
 void TestScene::onStart()
 {
-
+	//input system is not necessary for the assessment but could be a good coding practice to make an input class and some wrapper functions 
 	//GameEngine::Entity* player1;
 	//1 make an entity*
 	//2 make shapecomponent*

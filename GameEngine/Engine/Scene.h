@@ -1,6 +1,11 @@
 #pragma once
 #include "List.h"
 
+namespace GamePhysics
+{
+	class Collision;
+	class ColliderComponent;
+}
 
 namespace GameEngine
 {
@@ -28,6 +33,7 @@ namespace GameEngine
 
 	private:
 		
+		List<GamePhysics::Collidercomponent*> m_activeColliders;
 		List<Entity*> m_entities;
 	};
 }

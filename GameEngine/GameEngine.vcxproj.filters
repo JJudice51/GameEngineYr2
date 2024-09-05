@@ -95,5 +95,8 @@
     <ClInclude Include="Graphics\ShapeComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Physics\ColliderComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

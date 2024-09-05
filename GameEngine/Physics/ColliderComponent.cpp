@@ -1,4 +1,6 @@
 #include "ColliderComponent.h"
+#include "Engine/Engine.h"
+#include "Engine/Scene.h"
 
 void GamePhysics::ColliderComponent::start()
 {

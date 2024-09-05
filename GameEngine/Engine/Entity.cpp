@@ -65,6 +65,24 @@ void GameEngine::Entity::addComponent(Component* component)
 	m_components.add(component);
 }
 
+void GameEngine::Entity::onCollistionEnter(GamePhysics::Collision* collision)
+{
+	for (Component* component : m_components)
+		component->onCollisionEnter(collision);
+}
+
+bool GameEngine::Entity::getStarted()
+{
+	return false;
+}
+
+
+
+bool GameEngine::Entity::getEnabled()
+{
+	return false;
+}
+
 void GameEngine::Entity::setEnabled(bool enabled)
 {
 	if (!m_enabled && enabled)

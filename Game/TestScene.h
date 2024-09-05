@@ -8,8 +8,8 @@ public:
 	void onUpdate(double DeltaTime) override;
 
 private:
-	GameEngine::Entity* m_entity;
-	float m_accumulatedTime;
+	GameEngine::Entity* m_circle1;
+	GameEngine::Entity* m_circle2;
 
 
 };

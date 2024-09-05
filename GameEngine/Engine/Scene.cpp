@@ -47,6 +47,22 @@ void GameEngine::Scene::fixedUpdate(float FixedDeltatime)
 			if (row == column)
 				continue;
 
+			GamePhysics::Collision* collisionData1 = nullptr;
+			GamePhysics::Collision* collisionData2 = new GamePhysics::Collision;
+			GamePhysics::ColliderComponent* collider1 = *row;
+			GamePhysics::ColliderComponent* collider2 = *column;
+
+			if (collisionData1 = collider1->checkCollision(collider2))
+			{
+				//get collider 1 rigidbody and resolve collision
+				collider1->getOwner()->onCollistionEnter(collisionData1);
+			
+
+				collisionData2->normal = collisionData1->normal * -1;
+				collisionData2->collider = collider1;
+				collider2->getOwner()->onCollistionEnter(collisionData2);
+
+			}
 		}
 	}
 

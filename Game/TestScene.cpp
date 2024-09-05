@@ -2,6 +2,7 @@
 #include "Engine/Entity.h"
 #include "Graphics/ShapeComponent.h"
 #include "Engine/TransformComponent.h"
+#include "Physics/CircleColliderComponent.h"
 #include <chrono>
 #include <cmath>
 
@@ -14,21 +15,28 @@ void TestScene::onStart()
 	//3 add shapecomponent* to entity*
 	//4 add entity to the scene
 
-	m_entity = new GameEngine::Entity();
-	m_entity->getTransform()->setLocalScale({ 100,100 });
-	m_entity->getTransform()->setLocalPosition({ 400, 400 });
+	m_circle1 = new GameEngine::Entity();
+	m_circle1->getTransform()->setLocalScale({ 40,40 });
+	m_circle1->getTransform()->setLocalPosition({ 100, 100 });
+	m_circle1->addComponent<GameGraphics::ShapeComponent>()->setShapeType(GameGraphics::CIRCLE);
+	m_circle1->addComponent(new GamePhysics::CircleColliderComponent(50));
 
-	GameGraphics::ShapeComponent* shapeComponent = new GameGraphics::ShapeComponent();
-	shapeComponent->setShapeType(GameGraphics::ShapeType::CIRCLE);
-	shapeComponent->setColor(0xFF00FFFF);
-	m_entity->addComponent(shapeComponent);
-	
-	addEntity(m_entity);
+	m_circle2 = new GameEngine::Entity();
+	m_circle2->getTransform()->setLocalScale({ 40,40 });
+	m_circle2->getTransform()->setLocalPosition({ 600, 100 });
+	m_circle2->addComponent<GameGraphics::ShapeComponent>()->setShapeType(GameGraphics::CIRCLE);
+	m_circle2->addComponent(new GamePhysics::CircleColliderComponent(50));
+
+	addEntity(m_circle1);
+	addEntity(m_circle2);
 }
 
 void TestScene::onUpdate(double DeltaTime)
 {
-	m_accumulatedTime += DeltaTime;
+	GameMath::Vector2 position = m_circle1->getTransform()->getLocalPosition();
+	GameMath::Vector2 deltaPosition = { 40,0 };
+
+
 
 	float currentTime =
 		std::chrono::duration_cast<std::chrono::seconds>(
@@ -39,5 +47,5 @@ void TestScene::onUpdate(double DeltaTime)
 		sin(currentTime) * circleRadius + 400,
 		cos(currentTime) * circleRadius + 400};
 
-	m_entity->getTransform()->setLocalPosition(newPosition);
+	
 }

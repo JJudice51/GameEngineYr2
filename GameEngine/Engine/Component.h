@@ -9,7 +9,6 @@ namespace GamePhysics
 namespace GameEngine
 {
 	class Entity;
-
 	class Component
 	{
 	public:

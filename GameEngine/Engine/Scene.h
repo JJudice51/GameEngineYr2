@@ -31,9 +31,12 @@ namespace GameEngine
 		void addEntity(Entity* entity);
 		void removeEntity(Entity* entity);
 
+		void addActiveCollider(GamePhysics::ColliderComponent* collider) { m_activeColliders.add(collider); }
+		void removeActiveCollider(GamePhysics::ColliderComponent* collider) { m_activeColliders.remove(collider); }
+
 	private:
 		
-		List<GamePhysics::Collidercomponent*> m_activeColliders;
+		List<GamePhysics::ColliderComponent* > m_activeColliders;
 		List<Entity*> m_entities;
 	};
 }

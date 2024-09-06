@@ -13,20 +13,17 @@ namespace GameEngine
 
 		void start();
 		void update(double deltaTime);
-		void fixedUpdate(float FixedDeltatime);
+		void fixedUpdate(float fixedDeltatime);
 		void draw();
 		void end();
 
 		void addComponent(Component* component);
-
 
 		template<typename T>
 		T* addComponent();
 
 		template<typename T>
 		T* addComponent(T* component);
-
-	
 
 		template<typename T>
 		T* getComponent();
@@ -39,10 +36,10 @@ namespace GameEngine
 		virtual void onDisable() {}
 		virtual void onCollistionEnter(GamePhysics::Collision* collision);
 
-		bool getStarted();
-		TransformComponent* getTransform();
+		bool getStarted() { return m_started; }
+		TransformComponent* getTransform() { return m_transform; }
 
-		bool getEnabled();
+		bool getEnabled() { return m_enabled; }
 		void setEnabled(bool enabled);
 
 	private:

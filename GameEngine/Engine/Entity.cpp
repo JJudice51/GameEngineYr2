@@ -71,18 +71,6 @@ void GameEngine::Entity::onCollistionEnter(GamePhysics::Collision* collision)
 		component->onCollisionEnter(collision);
 }
 
-bool GameEngine::Entity::getStarted()
-{
-	return false;
-}
-
-
-
-bool GameEngine::Entity::getEnabled()
-{
-	return false;
-}
-
 void GameEngine::Entity::setEnabled(bool enabled)
 {
 	if (!m_enabled && enabled)
@@ -92,5 +80,3 @@ void GameEngine::Entity::setEnabled(bool enabled)
 
 	m_enabled = enabled;
 }
-
-

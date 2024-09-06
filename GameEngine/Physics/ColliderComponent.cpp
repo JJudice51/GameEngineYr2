@@ -4,8 +4,10 @@
 
 void GamePhysics::ColliderComponent::start()
 {
-	//add collider to the scene 
-	// Get Ownser's rigidbody
+	GameEngine::Engine::getCurrentScene()->addActiveCollider(this);
+	
+
+	// Get Owner's rigidbody
 }
 
 GamePhysics::Collision* GamePhysics::ColliderComponent::checkCollision(ColliderComponent* other)

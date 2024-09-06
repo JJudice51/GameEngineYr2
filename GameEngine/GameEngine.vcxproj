@@ -141,7 +141,6 @@
     <ClCompile Include="Engine\Entity.cpp" />
     <ClCompile Include="Engine\Scene.cpp" />
     <ClCompile Include="Engine\TransformComponent.cpp" />
-    <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="Graphics\ShapeComponent.cpp" />
     <ClCompile Include="Graphics\Window.cpp" />
     <ClCompile Include="Math\Matrix3.cpp" />

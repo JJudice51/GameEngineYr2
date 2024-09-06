@@ -15,12 +15,14 @@ void TestScene::onStart()
 	//3 add shapecomponent* to entity*
 	//4 add entity to the scene
 
+	//add circle1
 	m_circle1 = new GameEngine::Entity();
 	m_circle1->getTransform()->setLocalScale({ 40,40 });
 	m_circle1->getTransform()->setLocalPosition({ 100, 100 });
 	m_circle1->addComponent<GameGraphics::ShapeComponent>()->setShapeType(GameGraphics::CIRCLE);
 	m_circle1->addComponent(new GamePhysics::CircleColliderComponent(50));
 
+	//add circle2
 	m_circle2 = new GameEngine::Entity();
 	m_circle2->getTransform()->setLocalScale({ 40,40 });
 	m_circle2->getTransform()->setLocalPosition({ 600, 100 });

@@ -1,6 +1,8 @@
 #pragma once
 #include "Engine/Scene.h"
 
+class GameEngine::Entity;
+
 class TestScene : public GameEngine::Scene
 {
 public:

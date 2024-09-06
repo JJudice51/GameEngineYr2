@@ -13,10 +13,10 @@ namespace GameEngine
 		static float getDeltaTime() { return m_deltaTime; }
 		
 		static void setCurrentScene(Scene* scene) {  m_currentScene = scene; }
-		static Scene* getCurrentScene();
+		static Scene* getCurrentScene() { return m_currentScene; }
 
-		static float getTimeStep();
-		static void setTimeStep(float time);
+		static float getTimeStep() { return m_fixedTimeStep; }
+		static void setTimeStep(float time) { m_fixedTimeStep = time; }
 
 	private:
 		void start();

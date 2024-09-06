@@ -45,14 +45,6 @@ namespace GamePhysics
 		unsigned int m_color = 0x00FF00FF;
 		RigidBodyComponent* m_rigidBody;
 
-
-
-
-
-
-
-
-
 	};
 
 	struct Collision

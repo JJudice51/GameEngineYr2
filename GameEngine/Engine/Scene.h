@@ -18,7 +18,7 @@ namespace GameEngine
 
 		void start();
 		void update(double deltaTime);
-		void fixedUpdate(float FixedDeltatime);
+		void fixedUpdate(float fixedDeltatime);
 		void draw();
 		void end();
 

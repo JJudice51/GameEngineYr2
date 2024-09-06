@@ -14,6 +14,7 @@ namespace GamePhysics
 		void draw() override;
 
 		float getRadius() { return m_radius; }
+
 	private:
 		float m_radius;
 	};

@@ -13,6 +13,8 @@ void GameEngine::Scene::start()
 	{
 		entity->start();
 	}
+
+	onStart();
 }
 
 
@@ -25,9 +27,11 @@ void GameEngine::Scene::update(double deltaTime)
 
 		entity->update(deltaTime);
 	}
+
+	onUpdate(deltaTime);
 }
 
-void GameEngine::Scene::fixedUpdate(float FixedDeltatime)
+void GameEngine::Scene::fixedUpdate(float fixedDeltatime)
 {
 	//Update Entities
 	for (Entity* entity : m_entities)
@@ -35,9 +39,9 @@ void GameEngine::Scene::fixedUpdate(float FixedDeltatime)
 		if (!entity->getStarted())
 			entity->start();
 
-		entity->fixedUpdate(FixedDeltatime);
+		entity->fixedUpdate(fixedDeltatime);
 	}
-	onFixedUpdate(FixedDeltatime);
+	onFixedUpdate(fixedDeltatime);
 
 	//Update Colliders
 	for (auto row = m_activeColliders.begin(); row != m_activeColliders.end(); row++)
@@ -48,7 +52,7 @@ void GameEngine::Scene::fixedUpdate(float FixedDeltatime)
 				continue;
 
 			GamePhysics::Collision* collisionData1 = nullptr;
-			GamePhysics::Collision* collisionData2 = new GamePhysics::Collision;
+			GamePhysics::Collision* collisionData2 = new GamePhysics::Collision();
 			GamePhysics::ColliderComponent* collider1 = *row;
 			GamePhysics::ColliderComponent* collider2 = *column;
 

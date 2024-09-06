@@ -46,15 +46,16 @@ void GameEngine::TransformComponent::setLocalScale(GameMath::Vector2 scale)
 GameMath::Vector2 GameEngine::TransformComponent::getLocalScale()
 {
     updateMatrices();
-    GameMath::Vector2 xAxis = { m_globalMatrix.m00, m_globalMatrix.m01 };
-    GameMath::Vector2 yAxis = { m_globalMatrix.m10, m_globalMatrix.m11 };
-
-    return { xAxis.getMagnitude(), yAxis.getMagnitude() };
+    return m_scale;
 }
 
 GameMath::Vector2 GameEngine::TransformComponent::getGlobalScale()
 {
-    return GameMath::Vector2();
+    updateMatrices();
+    GameMath::Vector2 xAxis = { m_globalMatrix.m00, m_globalMatrix.m01 };
+    GameMath::Vector2 yAxis = { m_globalMatrix.m10, m_globalMatrix.m11 };
+
+    return { xAxis.getMagnitude(), yAxis.getMagnitude() };
 }
 
 void GameEngine::TransformComponent::setParent(TransformComponent* parent)

@@ -3,6 +3,7 @@
 #include "Graphics/ShapeComponent.h"
 #include "Engine/TransformComponent.h"
 #include "Physics/CircleColliderComponent.h"
+#include "Physics/RigidBody.h"
 #include <chrono>
 #include <cmath>
 

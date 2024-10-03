@@ -44,12 +44,6 @@ void GamePhysics::RigidBodyComponent::resolveCollision(GamePhysics::Collision* c
 		return;
 	}
 
-	else if (getMass() != otherRigidBodyComponent->getMass())
-	{
-
-		return;
-	}
-
 	//Physics Math, for Collision Resolution/Response
 	impulse = 2 * (normal.dotProduct(getVelocity() - otherRigidBodyComponent->getVelocity(), normal))
 		/ normal.dotProduct(normal, normal) * (1 / getMass() + 1 / otherRigidBodyComponent->getMass());

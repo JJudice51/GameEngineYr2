@@ -1,5 +1,6 @@
 #include "RigidBodyComponent.h"
 #include "Engine/TransformComponent.h"
+#include "Physics/ColliderComponent.h"
 #include "Engine/Entity.h"
 
 void GamePhysics::RigidBodyComponent::applyForce(GameMath::Vector2 force)
@@ -24,5 +25,36 @@ void GamePhysics::RigidBodyComponent::fixedUpdate(float fixedDeltaTime)
 
 void GamePhysics::RigidBodyComponent::resolveCollision(GamePhysics::Collision* collisionData)
 {
+	//variables to utilize in resoluion math
+	RigidBodyComponent* otherRigidbodyComponent = collisionData->collider->getRigidBody();
+	Vector2 normal = collisionData->normal;
+	float impulse;
 
+	//assuming both rigidbodies have infinite mass
+	if (!otherRigidBodyComponent)
+	{
+		//temporary rigid body component
+		otherRigidBodyComponent = new RigidBodyComponent();
+
+	
+		impulse = 2 * getMass() * normal.dotProduct(getVelocity(), normal);
+		Vector2 force = normal * impulse;
+
+		applyForceToEntity(otherRigidBodyComponent, force);
+		return;
+	}
+
+	else if (getMass() != otherRigidBodyComponent->getMass())
+	{
+
+		return;
+	}
+
+	//Physics Math, for Collision Resolution/Response
+	impulse = 2 * (normal.dotProduct(getVelocity() - otherRigid->getVelocity(), normal))
+		/ normal.dotProduct(normal, normal) * (1 / getMass() + 1 / otherRigid->getMass());
+
+	//Storing and applying force
+	Vector2 force = normal * impulse;
+	applyForceToEntity(otherRigidBodyComponent, force);
 }

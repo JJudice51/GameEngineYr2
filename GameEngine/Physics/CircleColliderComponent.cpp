@@ -41,8 +41,31 @@ GamePhysics::Collision* GamePhysics::CircleColliderComponent::checkCollisionCirc
 /// <returns></returns>
 GamePhysics::Collision* GamePhysics::CircleColliderComponent::checkCollisionAABB(AABBColliderComponent* other)
 {
-    return nullptr;
+    GameMath::Vector2 otherPosition = other->getOwner()->getTransform()->getGlobalPosition();
+    GameMath::Vector2 position = getOwner()->getTransform()->getGlobalPosition();
+    GameMath::Vector2 direction = otherPosition - position;
+
+    //If collision detcected return the data for that collision
+    if (position.x < otherPosition.x + other->getWidth() && position.x + getRadius() > otherPosition.x &&
+        position.y < otherPosition.y + other->getHeight() && position.y + getRadius() > otherPosition.y)
+    {
+        //Data for an AABB Collision
+        GamePhysics::Collision* collisionData = new Collision();
+        collisionData->collider = other;
+        collisionData->normal = direction.getNormalized();
+        collisionData->contactPoint = position + direction.getNormalized() * getRadius();
+        collisionData->penetrationDistance = (other->getRadius() + getRadius());
+
+        return collisionData;
+    }
+    
+    
+    else
+        return nullptr;
+
+
 }
+
 
 /// <summary>
 /// draws a circle collider to the scene

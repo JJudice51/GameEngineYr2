@@ -30,13 +30,13 @@ void GamePhysics::RigidBodyComponent::resolveCollision(GamePhysics::Collision* c
 	Vector2 normal = collisionData->normal;
 	float impulse;
 
-	//assuming both rigidbodies have infinite mass
+	//assuming both rigidbodies have infinite mass 
 	if (!otherRigidBodyComponent)
 	{
 		//temporary rigid body component
 		otherRigidBodyComponent = new RigidBodyComponent();
 
-	
+		
 		impulse = 2 * getMass() * normal.dotProduct(getVelocity(), normal);
 		Vector2 force = normal * impulse;
 
@@ -54,7 +54,7 @@ void GamePhysics::RigidBodyComponent::resolveCollision(GamePhysics::Collision* c
 	impulse = 2 * (normal.dotProduct(getVelocity() - otherRigidBodyComponent->getVelocity(), normal))
 		/ normal.dotProduct(normal, normal) * (1 / getMass() + 1 / otherRigidBodyComponent->getMass());
 
-	//Storing and applying force
+	//Store and apply force
 	Vector2 force = normal * impulse;
 	applyForceToEntity(otherRigidBodyComponent, force);
 }

@@ -1,6 +1,7 @@
 #include "Scene.h"
 #include "Entity.h"
 #include "Physics/ColliderComponent.h"
+#include "Physics/RigidBodyComponent.h"
 
 GameEngine::Scene::Scene()
 {

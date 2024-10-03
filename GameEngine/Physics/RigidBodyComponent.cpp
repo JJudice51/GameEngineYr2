@@ -26,7 +26,7 @@ void GamePhysics::RigidBodyComponent::fixedUpdate(float fixedDeltaTime)
 void GamePhysics::RigidBodyComponent::resolveCollision(GamePhysics::Collision* collisionData)
 {
 	//variables to utilize in resoluion math
-	RigidBodyComponent* otherRigidbodyComponent = collisionData->collider->getRigidBody();
+	RigidBodyComponent* otherRigidBodyComponent = collisionData->collider->getRigidBody();
 	Vector2 normal = collisionData->normal;
 	float impulse;
 
@@ -51,8 +51,8 @@ void GamePhysics::RigidBodyComponent::resolveCollision(GamePhysics::Collision* c
 	}
 
 	//Physics Math, for Collision Resolution/Response
-	impulse = 2 * (normal.dotProduct(getVelocity() - otherRigid->getVelocity(), normal))
-		/ normal.dotProduct(normal, normal) * (1 / getMass() + 1 / otherRigid->getMass());
+	impulse = 2 * (normal.dotProduct(getVelocity() - otherRigidBodyComponent->getVelocity(), normal))
+		/ normal.dotProduct(normal, normal) * (1 / getMass() + 1 / otherRigidBodyComponent->getMass());
 
 	//Storing and applying force
 	Vector2 force = normal * impulse;

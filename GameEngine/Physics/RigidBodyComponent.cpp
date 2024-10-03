@@ -2,6 +2,7 @@
 #include "Engine/TransformComponent.h"
 #include "Physics/ColliderComponent.h"
 #include "Engine/Entity.h"
+//#include "Math/Vector2.h"
 
 void GamePhysics::RigidBodyComponent::applyForce(GameMath::Vector2 force)
 {
@@ -27,7 +28,7 @@ void GamePhysics::RigidBodyComponent::resolveCollision(GamePhysics::Collision* c
 {
 	//variables to utilize in resoluion math
 	RigidBodyComponent* otherRigidBodyComponent = collisionData->collider->getRigidBody();
-	Vector2 normal = collisionData->normal;
+	GameMath::Vector2 normal = collisionData->normal;
 	float impulse;
 
 	//assuming both rigidbodies have infinite mass 
@@ -38,7 +39,7 @@ void GamePhysics::RigidBodyComponent::resolveCollision(GamePhysics::Collision* c
 
 		
 		impulse = 2 * getMass() * normal.dotProduct(getVelocity(), normal);
-		Vector2 force = normal * impulse;
+		GameMath::Vector2 force = normal * impulse;
 
 		applyForceToEntity(otherRigidBodyComponent, force);
 		return;
@@ -49,6 +50,6 @@ void GamePhysics::RigidBodyComponent::resolveCollision(GamePhysics::Collision* c
 		/ normal.dotProduct(normal, normal) * (1 / getMass() + 1 / otherRigidBodyComponent->getMass());
 
 	//Store and apply force
-	Vector2 force = normal * impulse;
+	GameMath::Vector2 force = normal * impulse;
 	applyForceToEntity(otherRigidBodyComponent, force);
 }

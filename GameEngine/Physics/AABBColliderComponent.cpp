@@ -36,6 +36,7 @@ GamePhysics::Collision* GamePhysics::AABBColliderComponent::checkCollisionCircle
         collisionData->penetrationDistance = (otherRadius + m_radius) - distance;
 
         return collisionData;
+    }
 }
 
 
@@ -44,7 +45,7 @@ GamePhysics::Collision* GamePhysics::AABBColliderComponent::checkCollisionCircle
 /// </summary>
 /// <param name="other">the other collider that this one would be checking for collision against</param>
 /// <returns></returns>
-GamePhysics::Collision* GamePhysics::AABBColliderComponent::checkCollisionAABB(AABBColliderComponent* other)
+    GamePhysics::Collision* GamePhysics::AABBColliderComponent::checkCollisionAABB(AABBColliderComponent* other)
 {
     //this is for getting direction to the other collider
     GameMath::Vector2 otherPosition = other->getOwner()->getTransform()->getGlobalPosition();

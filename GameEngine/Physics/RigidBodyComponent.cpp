@@ -5,7 +5,7 @@
 //#include "Math/Vector2.h"
 
 /// <summary>
-/// Applies a force divdied by the mass to change its current velocity 
+/// Applies a force divided by the mass to change its current velocity 
 /// </summary>
 /// <param name="force">the force being applied to the velocity divided by the mass</param>
 void GamePhysics::RigidBodyComponent::applyForce(GameMath::Vector2 force)
@@ -14,7 +14,7 @@ void GamePhysics::RigidBodyComponent::applyForce(GameMath::Vector2 force)
 }
 
 /// <summary>
-/// Applies a force to a RigidBody 
+/// Applies a force to a RigidBody
 /// </summary>
 /// <param name="rigidBody"> the entity receiving the force</param>
 /// <param name="force">the force being applied.</param>
@@ -24,12 +24,16 @@ void GamePhysics::RigidBodyComponent::applyForceToEntity(RigidBodyComponent* rig
 	rigidBody->applyForce(force);
 }
 
-
+/// <summary>
+/// update at a fixed timescale ei fixedDeltaTime
+/// </summary>
 void GamePhysics::RigidBodyComponent::fixedUpdate(float fixedDeltaTime)
 {
+	//sets the local position to be its current position + it's velcotiy * fixedDeltaTime to change its position every frame
 	GameMath::Vector2 position = getOwner()->getTransform()->getLocalPosition();
 	getOwner()->getTransform()->setLocalPosition(position + m_velocity * fixedDeltaTime);
 
+	//applies the force of gravity to the rigidbodies mass
 	GameMath::Vector2 gravity = { 0, getGravity() };
 	applyForce(gravity * getMass());
 }

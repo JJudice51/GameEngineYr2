@@ -6,9 +6,9 @@
 #include <raylib.h>
 
 /// <summary>
-/// 
+/// Checks for a collision with a Circle Collider
 /// </summary>
-/// <param name="other"></param>
+/// <param name="other">The other collider this one would be detecting</param>
 /// <returns></returns>
 GamePhysics::Collision* GamePhysics::CircleColliderComponent::checkCollisionCircle(CircleColliderComponent* other)
 {

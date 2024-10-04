@@ -9,11 +9,10 @@ float GameEngine::Engine::m_deltaTime = 0;
 
 void GameEngine::Engine::run()
 {
-	using namespace std::chrono;
-	auto currentTimePoint = std::chrono::high_resolution_clock::now().time_since_epoch();
-	double lastTime = std::chrono::duration_cast<std::chrono::milliseconds>(currentTimePoint).count();
+	double lastTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 	double deltaTime = 0;
 	double accumulatedTime = 0;
+
 
 	GameGraphics::Window window = GameGraphics::Window(800, 800, "Test Application");
 	window.open();
@@ -23,8 +22,8 @@ void GameEngine::Engine::run()
 
 	while (!window.shouldClose())
 	{
-		currentTimePoint = std::chrono::high_resolution_clock::now().time_since_epoch();
-		double currentTime = duration_cast<milliseconds>(currentTimePoint).count();
+
+		double currentTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 		deltaTime = currentTime - lastTime;
 		lastTime = currentTime;
 

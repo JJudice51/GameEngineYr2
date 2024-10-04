@@ -42,8 +42,7 @@ void TestScene::onUpdate(double DeltaTime)
 
 
 	float currentTime =
-		std::chrono::duration_cast<std::chrono::seconds>(
-			std::chrono::high_resolution_clock::now().time_since_epoch()).count();
+		std::chrono::duration_cast<std::chrono::seconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 
 	float circleRadius = 100;
 	GameMath::Vector2 newPosition = {

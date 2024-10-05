@@ -28,7 +28,7 @@ GamePhysics::Collision* GamePhysics::AABBColliderComponent::checkCollisionCircle
     if (position.x < otherPosition.x + getRadius() && position.x + m_width > otherPosition.x &&
         position.y < otherPosition.y + other->getRadius() && position.y + m_height > otherPosition.y)
     {
-        //Ger Circle collision data and return that collision
+        //Get Circle collision data and return that collision
         GamePhysics::Collision* collisionData = new Collision();
         collisionData->collider = other;
         collisionData->normal = direction.getNormalized();

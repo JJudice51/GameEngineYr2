@@ -20,9 +20,13 @@ namespace GamePhysics
 		float getRadius() {return m_radius;}
 
 	private:
-
+		//the horizontal measurement or distance measured from side to side.
 		float m_width;
+
+		//the measurement of the distance of an object from the base to the top.
 		float m_height;
+
+		//the line segment that runs from the center of the rectangle/square to any one of its vertices.
 		float m_radius;
 
 	};

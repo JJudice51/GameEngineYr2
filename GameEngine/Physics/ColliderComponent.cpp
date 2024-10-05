@@ -8,6 +8,7 @@ void GamePhysics::ColliderComponent::start()
 	
 
 	// Get Owner's rigidbody
+	//getOwner()->getComponent<RigidBodyComponent>();
 }
 
 GamePhysics::Collision* GamePhysics::ColliderComponent::checkCollision(ColliderComponent* other)

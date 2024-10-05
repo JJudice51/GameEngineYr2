@@ -16,6 +16,9 @@ namespace GamePhysics
 		float getRadius() { return m_radius; }
 
 	private:
+		//the distance from the center of the circle to any point on it's circumference.
 		float m_radius;
 	};
 }
+
+

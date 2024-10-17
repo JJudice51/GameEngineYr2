@@ -6,6 +6,7 @@
 #include "Physics/RigidBodyComponent.h"
 #include <chrono>
 #include <cmath>
+#include <iostream>
 
 void TestScene::onStart()
 {
@@ -22,6 +23,7 @@ void TestScene::onStart()
 	m_circle1->getTransform()->setLocalPosition({ 100, 100 });
 	m_circle1->addComponent<GameGraphics::ShapeComponent>()->setShapeType(GameGraphics::CIRCLE);
 	m_circle1->addComponent(new GamePhysics::CircleColliderComponent(50));
+	addEntity(m_circle1);
 
 	//add circle2
 	m_circle2 = new GameEngine::Entity();
@@ -29,13 +31,15 @@ void TestScene::onStart()
 	m_circle2->getTransform()->setLocalPosition({ 600, 100 });
 	m_circle2->addComponent<GameGraphics::ShapeComponent>()->setShapeType(GameGraphics::CIRCLE);
 	m_circle2->addComponent(new GamePhysics::CircleColliderComponent(50));
-
-	addEntity(m_circle1);
 	addEntity(m_circle2);
+	
+	
 }
 
 void TestScene::onUpdate(double DeltaTime)
 {
+
+	
 	GameMath::Vector2 position = m_circle1->getTransform()->getLocalPosition();
 	GameMath::Vector2 deltaPosition = { 40,0 };
 

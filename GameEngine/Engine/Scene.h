@@ -36,7 +36,7 @@ namespace GameEngine
 
 	private:
 		
-		List<GamePhysics::ColliderComponent* > m_activeColliders;
+		List<GamePhysics::ColliderComponent*> m_activeColliders;
 		List<Entity*> m_entities;
 	};
 }

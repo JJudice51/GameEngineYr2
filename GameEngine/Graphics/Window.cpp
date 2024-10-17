@@ -26,6 +26,7 @@ void GameGraphics::Window::setTargetFrameRate(int fps)
 void GameGraphics::Window::open()
 {
 	RAYLIB_H::InitWindow(m_width, m_height, m_title);
+	RAYLIB_H::SetWindowMonitor(1);
 }
 
 void GameGraphics::Window::beginDrawing()

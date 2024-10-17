@@ -33,7 +33,7 @@ namespace GameEngine
 		GameMath::Matrix3 m_localMatrix;
 		GameMath::Matrix3 m_globalMatrix;
 
-		GameMath::Vector2 m_translation = GameMath::Vector2{ 0.0f,0.0f };
+		GameMath::Vector2 m_translation = GameMath::Vector2{ 0.0f, 0.0f };
 		float m_rotation = 0;
 		GameMath::Vector2 m_scale = GameMath::Vector2{ 1.0f, 1.0f };
 

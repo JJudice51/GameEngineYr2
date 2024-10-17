@@ -2,6 +2,8 @@
 #include "Scene.h"
 #include "Graphics/Window.h"
 #include <chrono>
+//#include <iostream>
+
 
 GameEngine::Scene* GameEngine::Engine::m_currentScene = nullptr;
 float GameEngine::Engine::m_fixedTimeStep = 0.02f;
@@ -9,14 +11,15 @@ float GameEngine::Engine::m_deltaTime = 0;
 
 void GameEngine::Engine::run()
 {
+	
 	using namespace std::chrono;
 	auto currentTimePoint = high_resolution_clock::now().time_since_epoch();
-	double lastTime = std::chrono::duration_cast<std::chrono::milliseconds>(currentTimePoint).count();
+	double lastTime = duration_cast<milliseconds>(currentTimePoint).count();
 	double deltaTime = 0;
 	double accumulatedTime = 0;
 
 
-	GameGraphics::Window window = GameGraphics::Window(800, 800, "Test Application");
+	GameGraphics::Window window = GameGraphics::Window(800, 800, "Physics Simulation");
 	window.open();
 	window.setTargetFrameRate(60);
 
@@ -25,7 +28,7 @@ void GameEngine::Engine::run()
 	while (!window.shouldClose())
 	{
 		currentTimePoint = high_resolution_clock::now().time_since_epoch();
-		double currentTime = std::chrono::duration_cast<std::chrono::milliseconds>(currentTimePoint).count();
+		double currentTime = duration_cast<milliseconds>(currentTimePoint).count();
 		deltaTime = currentTime - lastTime;
 		lastTime = currentTime;
 

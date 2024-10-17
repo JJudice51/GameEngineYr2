@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include "Physics/ColliderComponent.h"
 #include "Physics/RigidBodyComponent.h"
+#include <iostream>
 
 GameEngine::Scene::Scene()
 {
@@ -60,6 +61,7 @@ void GameEngine::Scene::fixedUpdate(float fixedDeltatime)
 			if (collisionData1 = collider1->checkCollision(collider2))
 			{
 				//get collider 1 rigidbody and resolve collision
+				collider1->getRigidBody()->resolveCollision(collisionData1);
 				collider1->getOwner()->onCollistionEnter(collisionData1);
 			
 
@@ -80,6 +82,7 @@ void GameEngine::Scene::draw()
 		entity->draw();
 	}
 	onDraw();
+	
 }
 
 void GameEngine::Scene::end()
@@ -89,6 +92,7 @@ void GameEngine::Scene::end()
 		entity->end();
 	}
 	onEnd();
+	
 }
 
 void GameEngine::Scene::addEntity(Entity* entity)

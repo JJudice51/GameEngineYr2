@@ -1,10 +1,8 @@
-// Game.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
-
 #include "Engine/Engine.h"
 #include "TestScene.h"
 
+// Game.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
 
 int main(int argc, char* argv[])
 {
